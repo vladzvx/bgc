@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:BGC.Client.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BGC.Client.Views.GameBrowsePage2View"
+             x:DataType="vm:GameBrowsePage2ViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+	  <vm:GameBrowsePage2ViewModel />
+  </Design.DataContext>
+
+	<Grid RowDefinitions="*,Auto" Margin="10" ColumnDefinitions="*,Auto">
+		<Rectangle Fill="Orange" Height="50"/>
+		<TextBlock VerticalAlignment="Center"
+			   TextAlignment="Center"
+			   FontSize="16"
+			   FontWeight="SemiBold"
+               Text="{Binding Title2}"
+               TextWrapping="Wrap" />
+
+		<StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+			<Rectangle Fill="LightBlue" Height="4" Width="25"></Rectangle>
+			<Rectangle Fill="DarkCyan" Height="4" Width="25"></Rectangle>
+		</StackPanel>
+	</Grid>
+
+</UserControl>

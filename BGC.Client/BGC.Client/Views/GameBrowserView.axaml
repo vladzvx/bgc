@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:BGC.Client.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BGC.Client.Views.GameBrowserView"
+             x:DataType="vm:GameBrowserViewModel">
+  <Design.DataContext>
+    <vm:GameBrowserViewModel />
+  </Design.DataContext>
+
+	<Grid PointerPressed="OnPointerPressed"
+		PointerReleased="OnPointerReleased" 
+		RowDefinitions="*,Auto" Margin="10" ColumnDefinitions="*,Auto">
+		<TransitioningContentControl Content="{Binding CurrentPage}" />
+	</Grid>
+</UserControl>

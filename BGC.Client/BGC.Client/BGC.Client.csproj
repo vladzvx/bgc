@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.6" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\GameBrowsePage2View.axaml.cs">
+      <DependentUpon>GameBrowsePage2View.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\GameBrowsePage1View.axaml.cs">
+      <DependentUpon>GameBrowsePage1View.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\GameBrowserView.axaml.cs">
+      <DependentUpon>GameBrowserView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\GamesTableView.axaml.cs">
+      <DependentUpon>GamesTableView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LoginView.axaml.cs">
+      <DependentUpon>LoginView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\BGC.Common\BGC.Common.csproj" />
+	</ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+</Project>

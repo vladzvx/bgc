@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:BGC.Client.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BGC.Client.Views.GamesTableView"
+             x:DataType="vm:GamesTableViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:GamesTableViewModel />
+  </Design.DataContext>
+	<DataGrid Margin="20" CellPointerPressed="DataGridCellPointerPressed" ItemsSource="{Binding Games}"
+			   IsReadOnly="True"
+			  GridLinesVisibility="All"
+			  BorderThickness="1" BorderBrush="Gray">
+		<DataGrid.Columns>
+			<DataGridTextColumn Header="Название"  Binding="{Binding Name}"/>
+			<DataGridTextColumn Header="Возраст" Binding="{Binding Age}" />
+			<DataGridTextColumn Header="Кол-во игроков" Binding="{Binding Players}" />
+			<DataGridTextColumn Header="Длительность" Binding="{Binding Duration}" />
+		</DataGrid.Columns>
+	</DataGrid>
+</UserControl>

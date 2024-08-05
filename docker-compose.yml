@@ -1,0 +1,57 @@
+version: '3.4'
+
+services:
+  bgc.webapi:
+    image: bgc.webapi
+    ports:
+    - 5002:8080
+    hostname: webapi
+    container_name: BGC.WebApi
+    depends_on:
+    - bgc.debugpostgresql
+    environment:
+      PGSQLCNNSTR: "${PGSQLCNNSTR}"
+    build:
+      context: .
+      dockerfile: BGC.WebApi/Dockerfile
+
+  bgc.debugpostgresql:
+   ports:
+     - 54322:5432
+   container_name: BGC.PostgreSQL
+   hostname: debug_postgresql
+   image: postgres:16
+   restart: always
+   #volumes:
+    #- reports_pg_data:/var/lib/postgresql/data
+    # - ./init.sql:/docker-entrypoint-initdb.d/init_debug.sql
+   command:
+     - "postgres"
+     - "-c"
+     - "max_connections=100"
+     - "-c"
+     - "shared_buffers=512MB"
+     - "-c"
+     - "temp_buffers=64MB"
+     - "-c"
+     - "log_statement=all"
+   environment:
+     POSTGRES_PASSWORD: QW12cv9001
+     POSTGRES_DB: bgc
+
+  # bgc.browser:
+  #   ports:
+  #   - 5002:80
+  #   image: bgc.browser
+  #   container_name: BGC.Browser
+  #   build:
+  #     context: .
+  #     dockerfile: BGC.Client/BGC.Client.Browser/Dockerfile
+  bgc.testapi:
+    image: ${DOCKER_REGISTRY-}bgctestapi
+    ports:
+    - 5003:8080
+    build:
+      context: .
+      dockerfile: BGC.TestApi/Dockerfile
+

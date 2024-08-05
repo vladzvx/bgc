@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+   bgc.browser:
+     ports:
+     - 5002:80
+     image: bgc.browser
+     container_name: BGC.Browser
+     build:
+       context: .
+       dockerfile: BGC.Client/BGC.Client.Browser/Dockerfile
